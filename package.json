@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "mocha  --timeout 50000  --reporter mocha-allure-reporter",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+  },
+  "dependencies": {
+    "mocha": "^7.1.2",
+    "mocha-allure-reporter": "^1.4.0",
+    "playwright": "^1.0.2"
+  }
+}
