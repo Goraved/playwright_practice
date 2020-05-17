@@ -1,0 +1,15 @@
+version: '3'
+services:
+  tests:
+    image: playw
+    command: npm test
+    depends_on:
+      - setup
+    volumes:
+      - "./test:/test"
+      - "./allure-results:/allure-results"
+  setup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: playw

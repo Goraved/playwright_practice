@@ -7,7 +7,8 @@ let page
 
 before(async () => {
     browser = await playwright['chromium'].launch({
-        headless: false,
+        executablePath: '/usr/bin/chromium-browser',
+        headless: true,
         args: ['--no-sandbox']
     })
     page = await browser.newPage()
