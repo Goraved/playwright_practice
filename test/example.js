@@ -7,11 +7,13 @@ let page
 
 before(async () => {
     browser = await playwright['chromium'].launch({
-        executablePath: '/usr/bin/chromium-browser',
+        executablePath:'/usr/bin/chromium',
         headless: true,
-        args: ['--no-sandbox']
+        dumpio: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     })
-    page = await browser.newPage()
+
+    page = await browser.newPage('http://automationpractice.com/index.php')
 })
 
 const screenshot = allure.createStep("saveScreenshot", async name => {
@@ -115,7 +117,6 @@ describe('Shop', async () => {
         await register();
         await finishOrder();
         await openProfileOrders();
-        // Wrong locator to fail demo
         await checkOrderPresent();
     }).timeout(200000)
 

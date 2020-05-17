@@ -14,8 +14,8 @@ npm -v
 
 npm i playwright
 npm install mocha
-
 npm install mocha-allure-reporter
+npm install mocha-multi-reporters
 
 ## Install allure
 ## Linux
