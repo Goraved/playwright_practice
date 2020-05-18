@@ -6,9 +6,7 @@ services:
     depends_on:
       - setup
     volumes:
-      - ./test:/app/test
-      - ./allure-results:/app/allure-results
-      - ./allure-report:/app/allure-report
+      - .:/app
   setup:
     build:
       context: .

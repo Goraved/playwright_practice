@@ -7,13 +7,12 @@ let page
 
 before(async () => {
     browser = await playwright['chromium'].launch({
-        executablePath:'/usr/bin/chromium',
+        executablePath:'/usr/bin/chromium-browser',
         headless: true,
-        dumpio: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     })
 
-    page = await browser.newPage('http://automationpractice.com/index.php')
+    page = await browser.newPage()
 })
 
 const screenshot = allure.createStep("saveScreenshot", async name => {
