@@ -6,13 +6,14 @@ let browser
 let page
 
 before(async () => {
-    browser = await playwright['chromium'].launch({
-        executablePath:'/usr/bin/chromium-browser',
+    browser = await playwright.chromium.launch({
+//        executablePath:'/usr/bin/chromium',
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     })
 
-    page = await browser.newPage()
+       context = await browser.newContext();
+       page = await context.newPage();
 })
 
 const screenshot = allure.createStep("saveScreenshot", async name => {
