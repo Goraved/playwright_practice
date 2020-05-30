@@ -6,11 +6,14 @@ let browser
 let page
 
 before(async () => {
-    browser = await playwright['chromium'].launch({
-        headless: false,
-        args: ['--no-sandbox']
+    browser = await playwright.chromium.launch({
+//        executablePath:'/usr/bin/chromium',
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     })
-    page = await browser.newPage()
+
+       context = await browser.newContext();
+       page = await context.newPage();
 })
 
 const screenshot = allure.createStep("saveScreenshot", async name => {
@@ -114,7 +117,6 @@ describe('Shop', async () => {
         await register();
         await finishOrder();
         await openProfileOrders();
-        // Wrong locator to fail demo
         await checkOrderPresent();
     }).timeout(200000)
 

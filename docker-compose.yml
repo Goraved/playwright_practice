@@ -1,0 +1,14 @@
+version: '3'
+services:
+  tests:
+    image: playw
+    command: npm test
+    depends_on:
+      - setup
+    volumes:
+      - .:/app
+  setup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: playw
