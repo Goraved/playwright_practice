@@ -1,37 +1,16 @@
-FROM ubuntu:bionic
+FROM mcr.microsoft.com/playwright:v1.52.0
 
-# 1. Install node12
-RUN apt-get update && apt-get install -y curl && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get install -y nodejs
-
-# 2. Install WebKit dependencies
-RUN apt-get install -y libwoff1 \
-                       libopus0 \
-                       libwebp6 \
-                       libwebpdemux2 \
-                       libenchant1c2a \
-                       libgudev-1.0-0 \
-                       libsecret-1-0 \
-                       libhyphen0 \
-                       libgdk-pixbuf2.0-0 \
-                       libegl1 \
-                       libnotify4 \
-                       libxslt1.1 \
-                       libevent-2.1-6 \
-                       libgles2 \
-                       libvpx5
-
-# 3. Install Chromium dependencies
-
-RUN apt-get install -y libnss3 \
-                       libxss1 \
-                       libasound2
-
-ADD package.json /
-RUN npm install
-
-# Install Allure.
-RUN npm install -g allure-commandline --save-dev
-
+# Set working directory
 WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy the project files
+COPY . .
+
+# Command to run tests and generate HTML report
+CMD npx playwright test --reporter=html
