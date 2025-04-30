@@ -1,12 +1,26 @@
 {
-  "scripts": {
-    "test": "mocha --timeout 50000 --reporter mocha-multi-reporters --reporter-options configFile=config.json",
-    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+  "name": "playwright_practice",
+  "version": "1.0.0",
+  "description": "Just a [Playwright](https://github.com/microsoft/playwright) tool practice",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
   },
-  "dependencies": {
-    "mocha": "^7.1.2",
-    "mocha-allure-reporter": "^1.4.0",
-    "mocha-multi-reporters": "^1.1.7",
-    "playwright": "^1.0.2"
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goraved/playwright_practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Goraved/playwright_practice/issues"
+  },
+  "homepage": "https://github.com/Goraved/playwright_practice#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3"
   }
 }
