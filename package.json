@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Goraved/playwright_practice#readme",
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.56.1",
     "@types/node": "^22.15.3"
   }
 }
